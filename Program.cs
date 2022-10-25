@@ -1,34 +1,24 @@
-﻿namespace CalculatR.Classes 
+﻿using CalculatR.Classes;
+
+namespace CalculatR.App;
+public class CalculatR
 {
-    public class CalculatR 
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
+        try
         {
-            try 
-            {
-                decimal? valueOfOperation = Calculating();
-                Console.WriteLine(format: "Result: {0}", arg0: valueOfOperation);
-            } catch(Exception error)
-            {
-                Console.WriteLine(error.Message);
-            }
+            Security security = new();
+            Calculator calculatr = new();
+            security.CheckPassword();
+            calculatr.GetInputs();
+            calculatr.AboutValues();
+            calculatr.Calculating();
+            calculatr.MultiplicationTable(out int number);
         }
-        public static decimal? Calculating()
+        catch (Exception error)
         {
-            Console.Write("Enter first number: ");
-            int? firstNumber = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter second number: ");
-            int? secondNumber = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter arithmetic operation: ");
-            string? operation = Console.ReadLine();
-            decimal? result = operation switch {
-                "+" => firstNumber + secondNumber,
-                "-" => firstNumber - secondNumber,
-                "/" => firstNumber / secondNumber,
-                "*" => firstNumber * secondNumber,
-                _ => throw new Exception(message: "Operation failed")
-            };
-            return result;
+            Console.WriteLine(error.Message);
         }
     }
+    
 }
