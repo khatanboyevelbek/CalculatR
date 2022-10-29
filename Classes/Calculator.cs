@@ -1,5 +1,15 @@
 namespace CalculatR.Classes;
-public class Calculator
+
+public interface ICalculator
+{
+    static decimal FirstNumber {get; set;}
+    static decimal SecondNumber {get; set;}
+    void GetInputs();
+    void AboutValues();
+    void Calculating();
+    void MultiplicationTable(out int number);
+}
+public class Calculator : ICalculator
 {
     public static decimal FirstNumber { get; set; }
     public static decimal SecondNumber { get; set; }
